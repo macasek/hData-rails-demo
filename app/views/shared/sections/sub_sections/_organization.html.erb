@@ -1,0 +1,17 @@
+<% if organization -%>
+<h3>Name</h2>
+<div><%= organization.name %></div>
+
+<% organization.addresses.each_with_index do |address, index| -%>
+<h3>Address <%=index+1%></h3>
+<%= render :partial => "shared/sections/sub_sections/address", :object => address %>
+<% end -%>
+
+<% organization.points_of_contacts.each_with_index do |poc, index| -%>
+<h3>Point Of Contact <%=index+1%></h3>
+<%= render :partial => "shared/sections/sub_sections/person", :object => poc %>
+<% end -%>
+
+<% else -%>
+<div class="n_a">N/A</div>
+<% end -%>

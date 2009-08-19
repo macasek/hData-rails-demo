@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<allergy xmlns="http://projecthdata.org/hdata/schemas/2009/06/allergy" xmlns:ns3="http://projecthdata.org/hdata/schemas/2009/06/core">
+  <ns3:date>2009-07-13T15:49:24.689-04:00</ns3:date>
+  <type codeSystem="SNOMED CT" displayName="FOOD ALLERGY" code="414285001"/>
+  <product displayName="Peanut containing products" codeSystem="SNOWMED CT" code="F-61F25"/>
+  <reaction displayName="Explosive personality disorder" codeSystem="SNOWMED CT" code="231527003"/>
+  <severity displayName="Moderate" codeSystem="SNOWMED CT" code="6736007"/>
+</allergy>

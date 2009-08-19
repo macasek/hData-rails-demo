@@ -1,0 +1,22 @@
+<div class="info_source">
+  <h3>Source</h3>
+  <div>
+    <span><%= format_date information_source.date %></span> by <span><%=information_source.author.name.title%> 
+    <% information_source.author.name.givens.each do |n| -%>
+    <%=n%> 
+    <% end -%>
+    <%=information_source.author.name.lastname%><%= (information_source.author.name.suffix) ? ", #{information_source.author.name.suffix}" : ""%></span>
+  </div>
+  <div>Informant: <span>
+  <% if(information_source.informant.organization) -%>
+    <%= information_source.informant.actor.name %>
+  <% else -%>
+    <%=information_source.informant.actor.name.title%> 
+    <% information_source.informant.actor.name.givens.each do |n| -%>
+    <%=n%> 
+    <% end -%>
+    <%=information_source.informant.actor.name.lastname%><%= (information_source.informant.actor.name.suffix) ? ", #{information_source.informant.actor.name.suffix}" : ""%>
+  <% end -%>    
+  </span></div>
+  <div>Ref: <%= information_source.reference %></div>
+</div>

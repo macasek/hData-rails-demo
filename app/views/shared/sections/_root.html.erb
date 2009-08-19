@@ -1,0 +1,47 @@
+<% root.each_with_index do |item, index| -%>
+<div class="section">
+  <h1 class="section_name"><%=item.class%> Document <%=index+1%></h1>
+  <table class="section_data">
+    <tr class="even">
+      <td class="property">ID</td>
+      <td class="value"><%=item.document_id%></td>
+    </tr>
+    <tr class="odd">
+      <td class="property">Version</td>
+      <td class="value"><%=item.version%></td>
+    </tr>
+    <tr class="even">
+      <td class="property">Created</td>
+      <td class="value"><%= format_date item.created %></td>
+    </tr>
+    <tr class="odd">
+      <td class="property">Last Modified</td>
+      <td class="value"><%= format_date item.last_modified %></td>
+    </tr>
+  </table>
+  
+  <h3>Extensions</h3>
+  <table class="section_data">
+    <tr>
+      <th>urn</th>
+      <th>requirement</th>
+    </tr>
+    <% item.extensions.each do |ext| -%>
+    <tr class=<%=cycle("even", "odd")%>>
+      <td class="property"><%= ext.value %></td>
+      <td class="requirement"><%= ext.requirement %></td>
+    </tr>
+    <% end -%>
+  </table>
+  
+  <h3>Sections</h3>
+  <table class="section_data">
+    <tr>
+      <th>Type ID</th>
+      <th>Name</th>
+      <th>Path</th>
+    </tr>
+    <%= generate_root_document_section_html(item.sections) %>
+  </table>
+</div>
+<% end -%>

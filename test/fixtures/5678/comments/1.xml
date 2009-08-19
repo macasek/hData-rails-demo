@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<comment xmlns="http://projecthdata.org/hdata/schemas/2009/06/comment"
+ xmlns:ns2="http://projecthdata.org/hdata/schemas/2009/06/core">
+    <ns2:date>2009-08-05</ns2:date>
+    <author>
+        <ns2:name>
+            <ns2:title>Dr.</ns2:title>
+            <ns2:given>Joseph</ns2:given>
+            <ns2:lastname>Yang</ns2:lastname>
+        </ns2:name>
+    </author>
+    <text>Parents reported child has cold causing coughing, shortness of breath, wheezing, and retractions of the ribs. Child has been previously diagnosed with asthma.</text>
+</comment>

@@ -1,0 +1,48 @@
+<% patient.each_with_index do |item, index| -%>
+<div class="section">
+  <h5 class="section_name"><%=item.class%> Document <%=index+1%></h5>
+  <div class="left_col">
+  <%= render :partial=>"shared/sections/sub_sections/patient_card", :locals => {:patient=>item}%>
+  </div>
+  <div class="right_col">
+    <h5>PATIENT ID</h5>
+    <div class="bold"><%=item.id%></div>
+    <h5>DOB</h5>
+    <div class="bold"><%= item.birthtime.value.strftime("%d %B %Y")%></div>
+    <h5>PLACE OF BIRTH</h5>
+    <% item.birth_place.address.street_addresses.each do |sa| -%>
+    <div class="bold"><%= sa %></div>
+    <% end -%>
+    <div class="bold"><%=item.birth_place.address.city%>, <%=item.birth_place.address.state_or_province%> <%=item.birth_place.address.zip%> <%=item.birth_place.address.country%></div>
+    <h5>MARITAL STATUS</h5>
+    <div class="bold"><%=item.marital_status.display_name.titleize%></div>
+    <h5>RACE</h5>
+    <ul>
+    <% item.races.each do |race| -%>
+    <li class='bold'><%=race.display_name.titleize%></li>
+    <% end -%>
+    </ul>
+    <h4>LANGUAGE</h4>
+    <ul>
+    <% item.languages.each do |language| -%>
+      <li <%=(language.prefered?) ? " class='bold'" : "" %>><%=language.display_name.titleize%> <%=(language.prefered?) ? "(preferred)" : ""%></li>
+    <% end -%>
+    </ul>
+    <h4>LEGAL GUARDIANS</h4>
+    <% item.guardians.each_with_index do |guardian, index| -%>
+    <div <%=(index > 0) ? "style='margin-top:15px;'" : ""%>>
+      <% if guardian.actor.class == Person -%>
+        <%= render :partial => "shared/sections/sub_sections/person", :locals=>{:person=>guardian.actor}%>
+      <% else -%>
+        <%= render :partial => "shared/sections/sub_sections/organization", :locals=>{:organization=>guardian.actor}%>
+      <% end -%>
+    </div>
+    <% end -%>
+  </div>
+  
+  <br style="clear:both;"/>
+  <br/><br/><br/><br/><br/><br/>
+
+  <%= render :partial => "shared/sections/sub_sections/abstract_section", :locals => {:description => item.description, :information_source => item.information_source} %>
+</div>
+<% end -%>

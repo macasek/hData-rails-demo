@@ -1,0 +1,7 @@
+<% if actor.nil? -%>
+<div class="n_a">N/A</div>
+<% elsif(actor.organization) -%>
+  <%= render :partial => "shared/sections/sub_sections/organization", :object => actor.organization %>
+<% else -%>
+  <%= render :partial => "shared/sections/sub_sections/person", :object => actor.person %>
+<% end -%>

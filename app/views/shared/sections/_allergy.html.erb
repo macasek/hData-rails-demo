@@ -1,0 +1,28 @@
+<div class="section">
+  <h2 class="title">Allergies</h2>
+  <table class="allergy">
+    <tr class="heading">
+      <th class="col1">Product</th>
+      <th class="col2">Last Reaction</th>
+      <th class="col3">Type</th>
+      <th class="col4">Reaction</th>
+      <th class="col5">Severity</th>
+    </tr>
+  <% allergy.each_with_index do |item, index| -%>
+    <tr <%if index == allergy.length-1%>class="last"<%end%>>
+      <td class="col1"><%=item.product.display_name.titleize if(item.product)%></td>
+      <td class="col2"><%=item.date.value.strftime("%d %b %Y") if(item.date)%></td>
+      <td class="col3"><%=item.type.display_name.titleize if(item.type)%></td>
+      <td class="col4"><%=item.reaction.display_name.titleize if(item.reaction)%></td>
+      <td class="col5"><%=item.severity.display_name.titleize if(item.severity)%></td>
+    </tr>
+  <% end -%>
+  </table>
+  
+  <br/><br/>
+  <div>
+  <% allergy.each_with_index do |item, index| -%>
+  <%= render :partial => "shared/sections/sub_sections/abstract_section", :locals => {:description => item.description, :information_source => item.information_source} %>
+  <% end -%>
+  </div>
+</div>

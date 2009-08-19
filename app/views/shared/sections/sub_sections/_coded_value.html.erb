@@ -1,0 +1,26 @@
+<% if coded_value -%>
+<table class="section_data">
+  <tr class="even">
+    <td class="property">Code</td>
+    <td class="value"><%=coded_value.code%></td>
+  </tr>
+  <tr class="odd">
+    <td class="property">Code System</td>
+    <td class="value"><%=coded_value.code_system%></td>
+  </tr>
+  <tr class="even">
+    <td class="property">Display Name</td>
+    <td class="value"><%=coded_value.display_name%></td>
+  </tr>
+  <tr class="odd">
+    <td class="property">Version</td>
+    <td class="value"><%=coded_value.version%></td>
+  </tr>
+  <tr class="even">
+    <td class="property">Value</td>
+    <td class="value"><%=coded_value.value%></td>
+  </tr>
+</table>
+<% else -%>
+<div class="n_a">N/A</div>
+<% end -%>

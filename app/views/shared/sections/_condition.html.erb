@@ -1,0 +1,41 @@
+<div class="section condition">
+  <h2 class="title">Conditions</h2>
+  <% condition.each_with_index do |item, index| -%>
+  <div>
+    <div><span class="bold"><%=item.type.display_name.titleize%></span>: <%=format_date item.date_range.low%> to <%=format_date item.date_range.high%></div>
+  </div>
+  <h3>Treating Providers</h3>
+  <table class="condition">
+    <tr class="heading">
+      <th class="col1">Provider</th>
+      <th class="col2">Start Date</th>
+      <th class="col3">End Date</th>
+    </tr>
+    <% item.treating_providers.each_with_index do |provider, index2| -%>
+    <tr <%if index2 == item.treating_providers.length-1%>class="last"<%end%>>
+      <td class="col1">
+        <% if(provider.organization) -%>
+          <%= provider.actor.name %>
+        <% else -%>
+          <%=provider.actor.name.title%> 
+          <% provider.actor.name.givens.each do |n| -%>
+          <%=n%> 
+          <% end -%>
+          <%=provider.actor.name.lastname%><%= (provider.actor.name.suffix) ? ", #{provider.actor.name.suffix}" : ""%>
+        <% end -%>
+      </td>
+      <td class="col2"><%=format_date provider.date_range.low%></td>
+      <td class="col3"><%=format_date provider.date_range.high%></td>
+    </tr>
+    <% end -%>
+  </table>
+  <% end -%>
+  
+  
+  <br/><br/>
+  <div>
+  <% condition.each_with_index do |item, index| -%>
+  <%= render :partial => "shared/sections/sub_sections/abstract_section", :locals => {:description => item.description, :information_source => item.information_source} %>
+  <% end -%>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="description">
+  <h3>Description</h3>
+  <div><%=description.text%></div>
+  <div class="bold">
+  <% description.coded_values.each_with_index do |coded_value, index| -%>
+  <%=coded_value.display_name.titleize%><% if(index != description.coded_values.length-1)%>, <%end%>
+  <% end -%>
+  </div>
+</div>
+

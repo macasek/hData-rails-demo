@@ -1,0 +1,45 @@
+<div class="patient_card">
+  <div class="patient_img">
+    <% if (patient.gender.code.downcase == "f") -%>
+    <%=image_tag "female.png", :height=>180, :style=>"border:1px" %>
+    <% else -%>
+    <%=image_tag "male.png", :height=>180, :style=>"border:1px solid black" %>
+    <% end -%>
+  </div>
+  <div class="patient_info">
+    <h1><%=patient.name.lastname%>, <%=patient.name.suffix%></h1>
+    <h1><%=patient.name.title%> 
+    <% patient.name.givens.each do |n| -%>
+    <%=n%> 
+    <% end -%></h1>
+    <div style="margin-top:5px;">
+      <div style="float:left; width:170px;">
+        <h5>AGE</h5>
+        <span><%= calculate_age(patient.birthtime.value)%> years</span>
+      </div>
+      <div style="float:left; margin-left:10px;">
+        <% patient.addresses.each do |address| -%>
+        <h5>ADDRESS</h5>
+        <% address.street_addresses.each do |sa| -%>
+        <%= sa %> <br/>
+        <% end -%>
+        <%=address.city%>, <%=address.state_or_province%> <%=address.zip%> <%=address.country%><br/>
+        <% end -%>
+      </div>
+      <br style="clear:both;"/>
+    </div>
+    <div style="margin-top:6px;">
+      <div style="float:left; width:170px;">
+        <h5>GENDER</h5>
+        <span><%= (patient.gender.nil?) ? "Unknown" : patient.gender.display_name.titleize %></span>
+      </div>
+      <div style="float:left; margin-left:10px;">
+      <% patient.telecoms.each do |telecom| -%>
+        <%= telecom.value %> (<%= telecom.use %>)<br/>
+      <% end -%>
+      </div>
+      <br style="clear:both;"/>
+    </div>
+  </div>
+  <br style="clear:both;"/>
+</div>

@@ -1,0 +1,28 @@
+<div class="section">
+  <h2 class="title">Medications</h2>
+  <table>
+    <tr class="heading">
+      <th>Product</th>
+      <th>Type</th>
+      <th>Status</th>
+      <th>Order Information</th>
+      <th>Prescription</th>
+    </tr>
+  <% medication.each_with_index do |item, index| -%>
+    <tr <%if index == medication.length-1%>class="last"<%end%>>
+      <td><%=item.product.name.titleize%></td>
+      <td><%=item.type.display_name.titleize%></td>
+      <td><%=item.status.display_name.titleize%></td>
+      <td><%=item.order_information.order_number%></td>
+      <td><%=item.perscription.perscription_number%></td>
+    </tr>
+  <% end -%>
+  </table>
+  
+  <br/><br/>
+  <div>
+  <% medication.each_with_index do |item, index| -%>
+    <%= render :partial => "shared/sections/sub_sections/abstract_section", :locals => {:description => item.description, :information_source => item.information_source} %>
+  <% end -%>
+  </div>
+</div>

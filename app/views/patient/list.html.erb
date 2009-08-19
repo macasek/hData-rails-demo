@@ -1,0 +1,8 @@
+<div id="patient_list">
+  <h2>Patient List</h2>
+  <ul>
+  <% @patients.each do |patient| -%>
+    <li><%= link_to(patient, :action=> "show", :id=>patient, :path=>nil) %></li>
+  <% end -%>
+  </ul>
+</div>

@@ -1,0 +1,6 @@
+<% support.each_with_index do |item, index| -%>
+<div class="section">
+  <h1 class="section_name"><%=item.class%> Document <%=index+1%></h1>
+  <%=item.to_xml%>
+</div>
+<% end -%>

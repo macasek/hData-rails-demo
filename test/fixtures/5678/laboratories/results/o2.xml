@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<result xmlns:ns1="http://projecthdata.org/hdata/schemas/2009/06/core"
+ xmlns="http://projecthdata.org/hdata/schemas/2009/06/result"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <id>fh6hwrntn</id>
+    <ns1:date>2009-08-05</ns1:date>
+    <resultType code="code1" codeSystem="codeSystem1" version="version1" displayName="displayName1">resultType0</resultType>
+    <value xsi:type="unitValue" units="%" value="98"/>
+    <interpretation code="code3" codeSystem="codeSystem3" version="version3" displayName="displayName3">interpretation0</interpretation>
+    <referenceRange>referenceRange0</referenceRange>
+</result>

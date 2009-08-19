@@ -1,0 +1,29 @@
+<div class="section">
+  <h2 class="title">Healthcare Providers</h2>
+  <% healthcare_provider.each_with_index do |item, index| -%>
+  <div>
+    <div class="bold"><%=format_date item.date_range.low%> to <%=format_date item.date_range.high%></div>
+    <div>Provider: <span class="bold">
+      <% if(item.organization) -%>
+        <%= item.actor.name %>
+      <% else -%>
+        <%=item.actor.name.title%> 
+        <% item.actor.name.givens.each do |n| -%>
+        <%=n%> 
+        <% end -%>
+        <%=item.actor.name.lastname%><%= (item.actor.name.suffix) ? ", #{item.actor.name.suffix}" : ""%>
+      <% end -%>      
+    </span></div>
+    <div>Patient Id: <span class="bold"><%= item.patient_id%></span></div>
+    <div>Role: <span class="bold"><%= item.role.display_name.titleize%></span> Type: <span class="bold"><%= item.type.display_name.titleize%></span></div>
+  </div>
+  <% end -%>
+  
+  
+  <br/><br/>
+  <div>
+  <% healthcare_provider.each_with_index do |item, index| -%>
+  <%= render :partial => "shared/sections/sub_sections/abstract_section", :locals => {:description => item.description, :information_source => item.information_source} %>
+  <% end -%>
+  </div>
+</div>

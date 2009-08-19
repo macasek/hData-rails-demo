@@ -1,0 +1,21 @@
+<div id="title">
+  <span><%= link_to("Patient List", :action=> "index", :id=>@patient_id, :path=>nil) %></span> > 
+  <span><%=@patient_id%></span>
+</div>
+<div class="nav">
+  <ul>
+    <li>
+      <%= link_to("Root", :id=>@patient_id, :path=>nil) %>
+      <%= generate_navigation(@root_obj.sections, @patient_id) %>
+    </li>
+  </ul>
+</div>
+<div class="data">
+  <% if @error -%>
+    <div class="error_msg"><%=@error%></div>
+  <% end -%>
+  <% if @view_type_id -%>
+  <%= render :partial => "shared/sections/#{@view_type_id}", :object => @objs %>
+  <% end -%>
+</div>
+<br style="clear:both;" />

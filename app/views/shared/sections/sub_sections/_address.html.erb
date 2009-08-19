@@ -1,0 +1,15 @@
+<% if address -%>
+<div class="section_data">
+  <% address.street_addresses.each do |street_address| -%>
+  <div><%=street_address%></div>
+  <% end -%>
+  <div>
+    <span><%=address.city%></span>, 
+    <span><%=address.state_or_province%></span> 
+    <span><%=address.zip%></span> 
+    <span><%=address.country%></span>
+  </div>
+</div>
+<% else -%>
+<div class="n_a">N/A</div>
+<% end -%>

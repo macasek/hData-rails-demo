@@ -1,0 +1,31 @@
+<div class="section">
+  <h2 class="title">Immunizations</h2>
+  <% immunization.each_with_index do |item, index| -%>
+  <div>
+    <div class="bold"><%=format_date item.date%></div>
+    <div><%=item.product.name.display_name.titleize%>; series #: <%=item.series_number%></div>
+    <% if (item.refusal) -%>
+    <div>Refusal: <%=item.refusal%></div>
+    <% end -%>
+    <div>Performer: <span class="bold">
+      <% if(item.performer.organization) -%>
+        <%= item.performer.actor.name %>
+      <% else -%>
+        <%=item.performer.actor.name.title%> 
+        <% item.performer.actor.name.givens.each do |n| -%>
+        <%=n%> 
+        <% end -%>
+        <%=item.performer.actor.name.lastname%><%= (item.performer.actor.name.suffix) ? ", #{item.performer.actor.name.suffix}" : ""%>
+      <% end -%>      
+    </span></div>
+  </div>
+  <% end -%>
+  
+  
+  <br/><br/>
+  <div>
+  <% immunization.each_with_index do |item, index| -%>
+  <%= render :partial => "shared/sections/sub_sections/abstract_section", :locals => {:description => item.description, :information_source => item.information_source} %>
+  <% end -%>
+  </div>
+</div>

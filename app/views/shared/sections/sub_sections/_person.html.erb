@@ -1,0 +1,22 @@
+<% if person -%>
+<div class="bold">
+<%=person.name.title%> 
+<% person.name.givens.each do |n| -%>
+<%=n%> 
+<% end -%>
+<%=person.name.lastname%><%= (person.name.suffix) ? ", #{person.name.suffix}" : ""%>
+</div>
+<% person.addresses.each do |address| -%>
+<% address.street_addresses.each do |sa| -%>
+<div><%= sa %></div>
+<% end -%>
+<div><%=address.city%>, <%=address.state_or_province%> <%=address.zip%> <%=address.country%></div>
+<% end -%>
+<div style="margin-top:10px;">
+<% person.telecoms.each do |telecom| -%>
+  <%= telecom.value %> (<%= telecom.use %>)<br/>
+<% end -%>
+</div>
+<% else -%>
+<div class="n_a">N/A</div>
+<% end -%>

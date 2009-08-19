@@ -1,0 +1,27 @@
+<div class="section">
+  <h2 class="title">Advance Directives</h2>
+  <% advance_directive.each_with_index do |item, index| -%>
+  <div>
+    <div><span class="bold"><%=item.type.display_name.titleize%></span>: <%=format_date item.date%></div>
+    <div>
+      <% if(item.custodian.organization) -%>
+        <%= item.custodian.actor.name %>
+      <% else -%>
+        <%=item.custodian.actor.name.title%> 
+        <% item.custodian.actor.name.givens.each do |n| -%>
+        <%=n%> 
+        <% end -%>
+        <%=item.custodian.actor.name.lastname%><%= (item.custodian.actor.name.suffix) ? ", #{item.custodian.actor.name.suffix}" : ""%>
+      <% end -%>
+    </div>
+  </div>
+  <% end -%>
+  
+  
+  <br/><br/>
+  <div>
+  <% advance_directive.each_with_index do |item, index| -%>
+  <%= render :partial => "shared/sections/sub_sections/abstract_section", :locals => {:description => item.description, :information_source => item.information_source} %>
+  <% end -%>
+  </div>
+</div> 

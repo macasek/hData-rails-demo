@@ -1,0 +1,37 @@
+<div class="section">
+  <h2 class="title">Encounters</h2>
+  <table class="encounter">
+    <tr class="heading">
+      <th class="col1">Provider</th>
+      <th class="col2">Type</th>
+      <th class="col3">Start Date</th>
+      <th class="col4">End Date</th>
+    </tr>
+    <% encounter.each_with_index do |item, index| -%>
+    <tr <%if index == encounter.length-1%>class="last"<%end%>>
+      <td class="col1">
+        <% if(item.provider.organization) -%>
+          <%= item.provider.actor.name %>
+        <% else -%>
+          <%=item.provider.actor.name.title%> 
+          <% item.provider.actor.name.givens.each do |n| -%>
+          <%=n%> 
+          <% end -%>
+          <%=item.provider.actor.name.lastname%><%= (item.provider.actor.name.suffix) ? ", #{item.provider.actor.name.suffix}" : ""%>
+        <% end -%>
+      </td>
+      <td class="col2"><%=item.type.display_name.titleize%></td>
+      <td class="col3"><%=format_date item.date_range.low%></td>
+      <td class="col4"><%=format_date item.date_range.high%></td>
+    </tr>
+    <% end -%>
+  </table>
+  
+  
+  <br/><br/>
+  <div>
+  <% encounter.each_with_index do |item, index| -%>
+  <%= render :partial => "shared/sections/sub_sections/abstract_section", :locals => {:description => item.description, :information_source => item.information_source} %>
+  <% end -%>
+  </div>
+</div>

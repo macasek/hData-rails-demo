@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<patient xmlns="http://projecthdata.org/hdata/schemas/2009/06/patient_information" xmlns:ns3="http://projecthdata.org/hdata/schemas/2009/06/core">
+  <id>5678</id>
+  <ns3:name>
+      <ns3:given>Noah</ns3:given>
+      <ns3:given>D.</ns3:given>
+      <ns3:lastname>Porter</ns3:lastname>
+  </ns3:name>
+  <ns3:address>
+      <ns3:streetAddress>202 Burlington Rd.</ns3:streetAddress>
+      <ns3:city>Bedford</ns3:city>
+      <ns3:stateOrProvince>MA</ns3:stateOrProvince>
+      <ns3:zip>02140</ns3:zip>
+      <ns3:country>USA</ns3:country>
+  </ns3:address>
+  <ns3:telecom value="781-555-0350" use="home"/>
+  <gender codeSystem="HL7" code="M" displayName="Male" version="1"/>
+  <language prefered="true" code="eng" codeSystem="ISO 639" version="3" displayName="English"/>
+  <birthtime>2004-12-04</birthtime>
+  <maritalStatus codeSystem="V15929" code="S" displayName="Never Married" version="1"/>
+  <race codeSystem="HL7" code="2028-9" version="1" displayName="Asian"/>
+  <race codeSystem="HL7" code="2106-3" version="1" displayName="White"/>
+  <guardian>
+      <ns3:person>
+          <ns3:name>
+              <ns3:given>Matthew</ns3:given>
+              <ns3:lastname>Porter</ns3:lastname>
+          </ns3:name>
+          <ns3:address>
+              <ns3:streetAddress>202 Burlington Rd.</ns3:streetAddress>
+              <ns3:city>Bedford</ns3:city>
+              <ns3:stateOrProvince>MA</ns3:stateOrProvince>
+              <ns3:zip>01730</ns3:zip>
+              <ns3:country>USA</ns3:country>
+          </ns3:address>
+          <ns3:telecom value="781-555-0350" use="home"/>
+          <ns3:telecom value="781-555-2559" use="work"/>
+          <ns3:telecom value="781-555-5207" use="cell"/>
+      </ns3:person>
+  </guardian>
+  <guardian>
+      <ns3:person>
+          <ns3:name>
+              <ns3:given>Brooke</ns3:given>
+              <ns3:lastname>Porter</ns3:lastname>
+          </ns3:name>
+          <ns3:address>
+              <ns3:streetAddress>202 Burlington Rd.</ns3:streetAddress>
+              <ns3:city>Bedford</ns3:city>
+              <ns3:stateOrProvince>MA</ns3:stateOrProvince>
+              <ns3:zip>01730</ns3:zip>
+              <ns3:country>USA</ns3:country>
+          </ns3:address>
+          <ns3:telecom value="781-555-0350" use="home"/>
+          <ns3:telecom value="617-555-3459" use="work"/>
+          <ns3:telecom value="781-555-5362" use="cell"/>
+      </ns3:person>
+  </guardian>
+  <birthPlace>
+      <ns3:address>
+          <ns3:city>Boston</ns3:city>
+          <ns3:stateOrProvince>MA</ns3:stateOrProvince>
+          <ns3:country>USA</ns3:country>
+      </ns3:address>
+  </birthPlace>
+</patient>

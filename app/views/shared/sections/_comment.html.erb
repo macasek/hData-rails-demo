@@ -1,0 +1,17 @@
+<div class="section">
+<% comment.each_with_index do |item, index| -%>
+  <div class="comment">
+    <h2 class="title"><%=item.class%> <%=index+1%></h2>
+    <div>
+      <span><%= format_date item.date %></span> - <%= item.text %>
+      <div class="bold">
+        <%=item.author.name.title%> 
+        <% item.author.name.givens.each do |n| -%>
+        <%=n%> 
+        <% end -%>
+        <%=item.author.name.lastname%><%= (item.author.name.suffix) ? ", #{item.author.name.suffix}" : ""%>      
+      </div>
+    </div>  
+  </div>
+<% end -%>
+</div>
