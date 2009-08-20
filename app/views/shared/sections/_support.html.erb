@@ -1,6 +1,22 @@
-<% support.each_with_index do |item, index| -%>
 <div class="section">
-  <h1 class="section_name"><%=item.class%> Document <%=index+1%></h1>
-  <%=item.to_xml%>
+  <h2 class="title">Supports</h2>
+  <% support.each_with_index do |item, index| -%>
+  <div class="bold"><%=format_date item.date_range.low%> to <%=format_date item.date_range.high%></div>
+  <div>Type: <%=item.type.display_name.titleize%></div>
+  <div>Person: <span>
+    <%=item.person.name.title%> 
+    <% item.person.name.givens.each do |n| -%>
+    <%=n%> 
+    <% end -%>
+    <%=item.person.name.lastname%><%= (item.person.name.suffix) ? ", #{item.person.name.suffix}" : ""%>
+  </span> (<%=item.relationship.display_name.titleize%>)</div>
+  <% end -%>
+  
+  
+  <br/><br/>
+  <div>
+  <% support.each_with_index do |item, index| -%>
+  <%= render :partial => "shared/sections/sub_sections/abstract_section", :locals => {:description => item.description, :information_source => item.information_source} %>
+  <% end -%>
+  </div>
 </div>
-<% end -%>

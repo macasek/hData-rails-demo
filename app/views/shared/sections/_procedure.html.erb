@@ -1,6 +1,36 @@
-<% procedure.each_with_index do |item, index| -%>
 <div class="section">
-  <h1 class="section_name"><%=item.class%> Document <%=index+1%></h1>
-  <%=item.to_xml%>
+  <h2 class="title">Procedures</h2>
+  <% procedure.each_with_index do |item, index| -%>
+  <div>
+    <div class="bold"><%=format_date item.date_range.low%> to <%=format_date item.date_range.high%></div>
+    <div>Type: <%=item.type.display_name.titleize%></div>
+    <div>Status: <%=item.status.display_name.titleize%></div>
+    <div>
+      Products: <span>
+      <%item.product.each_with_index do |prod, index| -%>
+      <%=prod.display_name.titleize%><%if(index!=item.product.length-1)%>, <%end-%>
+      <%end-%>
+    </span></div>
+    <div>Substance: <%=item.substance.display_name.titleize%></div>
+    <div>Performer: <span>
+      <% if(item.performer.organization) -%>
+        <%= item.performer.actor.name %>
+      <% else -%>
+        <%=item.performer.actor.name.title%> 
+        <% item.performer.actor.name.givens.each do |n| -%>
+        <%=n%> 
+        <% end -%>
+        <%=item.performer.actor.name.lastname%><%= (item.performer.actor.name.suffix) ? ", #{item.performer.actor.name.suffix}" : ""%>
+      <% end -%>
+    </span></div>
+  </div>
+  <% end -%>
+  
+  
+  <br/><br/>
+  <div>
+  <% procedure.each_with_index do |item, index| -%>
+  <%= render :partial => "shared/sections/sub_sections/abstract_section", :locals => {:description => item.description, :information_source => item.information_source} %>
+  <% end -%>
+  </div>
 </div>
-<% end -%>
